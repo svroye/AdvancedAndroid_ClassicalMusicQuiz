@@ -310,8 +310,8 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
     protected void onDestroy() {
         // DONE (4): When the activity is destroyed, set the MediaSession to inactive.
         super.onDestroy();
-        mMediaSession.setActive(false);
         releasePlayer();
+        mMediaSession.setActive(false);
     }
 
     
@@ -342,6 +342,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                     mExoPlayer.getCurrentPosition(), 1f);
             Log.d(TAG, "onPlayerStateChanged: PAUSED");
         }
+        mMediaSession.setPlaybackState(mPlaybackStateCompatBuilder.build());
     }
 
     @Override
